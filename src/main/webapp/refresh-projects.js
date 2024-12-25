@@ -226,4 +226,11 @@ function disableCtrlURLInput() {
     }
 }
 
-window.addEventListener("load", disableCtrlURLInput);
+window.addEventListener("DOMContentLoaded", () => {
+    disableCtrlURLInput();
+
+    document.querySelector("#refreshButton").addEventListener("click", (event) => {
+        const { url, paramList } = event.target.dataset;
+        refreshTemplateList(url, paramList);
+    });
+});
