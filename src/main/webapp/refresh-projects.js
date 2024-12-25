@@ -234,3 +234,12 @@ window.addEventListener("DOMContentLoaded", () => {
         refreshTemplateList(url, paramList);
     });
 });
+
+Behaviour.specify(".fortify-refresh-button", "fortify-refresh-button-behaviour", 0, (button) => {
+    button.addEventListener("click", (event) => {
+        const target = event.target;
+        const { refreshUrl, callback } = target.dataset;
+
+        window[callback](refreshUrl, target);
+    });
+});
