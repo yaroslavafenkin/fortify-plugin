@@ -69,7 +69,8 @@
                     </div>
                     <div style="float:left">
                         <input value="&#x1F50E;&#xFE0E;" type="button" id="refreshPrjButton"
-                               onclick="refreshProjectNames('${rootURL}/descriptor/${descriptor.clazz.name}/refreshProjects', this)"/>
+                               class="fortify-refresh-button" data-callback="refreshProjectNames"
+                               data-refresh-url="${rootURL}/descriptor/${descriptor.clazz.name}/refreshProjects"/>
                     </div>
                     <div style="display:none;" id="refreshSpinner">
                         <img src="${imagesURL}/spinner.gif"/>
@@ -85,7 +86,8 @@
                     </div>
                     <div style="float:left">
                         <input value="&#x1F50E;&#xFE0E;" type="button" id="refreshPrjVerButton"
-                               onclick="refreshProjectVersions('${rootURL}/descriptor/${descriptor.clazz.name}/refreshVersions', this)"/>
+                               class="fortify-refresh-button" data-callback="refreshProjectVersions"
+                               data-refresh-url="${rootURL}/descriptor/${descriptor.clazz.name}/refreshVersions"/>
                     </div>
                     <div style="clear:both" />
                 </f:entry>
