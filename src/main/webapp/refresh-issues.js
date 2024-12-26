@@ -183,3 +183,10 @@
             }
             window.setTimeout(loadIssues, 0);
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            window.stamp = new Date().getTime();
+            var { contextUrl, imagesUrl } = document.querySelector(".table-action-data-holder").dataset;
+            window.contextUrl = contextUrl;
+            loadIssueTable(`${imagesUrl}/spinner.gif`);
+        });

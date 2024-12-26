@@ -20,10 +20,7 @@
         <l:header>
             <link rel="stylesheet" type="text/css" href="${rootURL}/plugin/fortify/issueStyles.css"/>
             <script src="${rootURL}/plugin/fortify/refresh-issues.js"></script>
-            <script type="text/javascript" defer="true">
-                var stamp = new Date().getTime();
-                var contextUrl = '${h.getActionUrl(it.project.url,it)}';
-            </script>
+            <span class="table-action-data-holder" data-context-url="${h.getActionUrl(it.project.url,it)}" data-images-url="${imagesURL}"/>
         </l:header>
 
         <st:include page="sidepanel.jelly" it="${it.project}"/>
@@ -48,9 +45,6 @@
                 <j:otherwise>
                     You have to build your project in order to access Fortify Assessment results
                 </j:otherwise>
-	            <script type="text/javascript" defer="true">
-	                loadIssueTable('${imagesURL}/spinner.gif');
-	            </script>
             </j:choose>
         </l:main-panel>
     </l:layout>

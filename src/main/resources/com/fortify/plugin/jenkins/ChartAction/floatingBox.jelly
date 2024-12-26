@@ -19,38 +19,7 @@
     <div>
       <img id="nvsGraph" src="${action.urlName}/graph" />
     </div>
-    <script defer="true">
-        var stamp = new Date().getTime();
-        function checkGraphUpdate() {
-            fetch("${action.urlName}/checkUpdates", {
-                method: 'POST',
-                headers: crumb.wrap({
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }),
-                body: new URLSearchParams({
-                    stamp: stamp,
-                })
-            }).then(function(rsp) {
-                if (rsp.ok) {
-                    var update = rsp.headers.get('go');
-                    if(update == "go") {
-                        stamp = new Date().getTime();
-                        var image = document.getElementById('nvsGraph');
-                        if(image.complete) {
-                            var new_image = new Image();
-                            new_image.id = "nvsGraph";
-                            new_image.src = image.src + "?v=" + stamp;
-                            // insert new image and remove old
-                            image.parentNode.insertBefore(new_image,image);
-                            image.parentNode.removeChild(image);
-                        }
-                    }
-                    // next update in 10 sec
-                    window.setTimeout(checkGraphUpdate, 10000);
-                }
-            });
-        }
-        window.setTimeout(checkGraphUpdate, 15000);
-    </script>
+    <st:adjunct includes="com.fortify.plugin.jenkins.ChartAction.graph"/>
+    <span class="fortify-graph-data-holder" data-url-name="${action.urlName}"/>
   </div>
 </j:jelly>
